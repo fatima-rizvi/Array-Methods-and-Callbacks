@@ -68,7 +68,7 @@ function getFinals(arr){
     return finalsArray;
 }
 
-//console.log(getFinals(fifaData));
+console.log(getFinals(fifaData));
 
 
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
@@ -85,8 +85,8 @@ function getYears(cb, arr) {
     return yearsOnly;
 };
 
-getYears(getFinals, fifaData);
-//console.log(getYears(getFinals, fifaData));
+//getYears(getFinals, fifaData);
+console.log(getYears(getFinals, fifaData));
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
@@ -109,8 +109,8 @@ function getWinners(cb, arr) {
     return winners;
 };
 
-//console.log(getWinners(getFinals, fifaData));
-getWinners(getFinals, fifaData);
+console.log(getWinners(getFinals, fifaData));
+//getWinners(getFinals, fifaData);
 
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
@@ -122,7 +122,9 @@ Parameters:
 function getWinnersByYear(cb1, cb2) {
     let winnersArray = cb1(getFinals, fifaData);
     let yearsArray = cb2(getFinals, fifaData);
-    return winnersArray, yearsArray
+    for (let i = 0; i < yearsArray.length; i++){
+        console.log(`In ${yearsArray[i]}, ${winnersArray[i]} won the world cup!`);
+    };
 };
 
 console.log(getWinnersByYear(getWinners, getYears));
