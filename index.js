@@ -97,11 +97,13 @@ function getWinners(cb, arr) {
     let returnedArray = cb(arr);
     //use a for loop to iterate through each final game
     for(let i = 0; i < returnedArray.length; i++){
-        //if the home team scored more, push the home eam to the winners array. If the away team scored more, push the away team.
+        //if the home team scored more, push the home eam to the winners array. If the away team scored more, push the away team. If there is a tie, return that statement
         if(returnedArray[i]["Home Team Goals"] > returnedArray[i]["Away Team Goals"]){
             winners.push(returnedArray[i]["Home Team Name"]);
         }else if(returnedArray[i]["Home Team Goals"] < returnedArray[i]["Away Team Goals"]){
             winners.push(returnedArray[i]["Away Team Name"]);
+        }else if(returnedArray[i]["Home Team Goals"] === returnedArray[i]["Away Team Goals"]){
+            winners.push("Tie");    
         };
     };
     return winners;
@@ -117,11 +119,13 @@ Parameters:
  * callback function getYears
  */
 
-function getWinnersByYear(/* code here */) {
-
+function getWinnersByYear(cb1, cb2) {
+    let winnersArray = cb1(getFinals, fifaData);
+    let yearsArray = cb2(getFinals, fifaData);
+    return winnersArray, yearsArray
 };
 
-getWinnersByYear();
+console.log(getWinnersByYear(getWinners, getYears));
 
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
