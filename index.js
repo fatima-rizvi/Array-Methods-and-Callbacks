@@ -17,21 +17,49 @@ const finalGames = fifaData.filter(function(item){ //use .filter() to isolate al
     return item["Stage"] === "Final";
 });
 
+// make a variable to hold the 2014 final
+let final2014;
+
 for(let i = 0; i < finalGames.length; i++){ //run a for loop through the array of final games
-    if(finalGames[i]["Year"] === 2014){ //if the game is from the year 2014, console log the home team name
-        console.log(finalGames[i]["Home Team Name"]);
-    }
-}
+    if(finalGames[i]["Year"] === 2014){ //if the game is from the year 2014, store it into a variable
+        final2014 = finalGames[i];
+    };
+};
+
+//console log the home team's name
+console.log(final2014["Home Team Name"]);
 
 //b)
 
+//console log the away team's name
+console.log(final2014["Away Team Name"]);
+
+//c) 
+
+//console log the home team's goals
+console.log(final2014["Home Team Goals"]);
+
+//d) 
+
+//console log the away team's goals
+console.log(final2014["Away Team Goals"]);
+
+//e)
+
+if(final2014["Home Team Goals"] > final2014["Away Team Goals"]){
+    console.log(final2014["Home Team Name"]);
+}else if(final2014["Home Team Goals"] < final2014["Away Team Goals"]){
+    console.log(final2014["Away Team Name"]);
+};
+
+
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+const getFinals = fifaData.filter(function(item){ //use .filter() to isolate all final games
+    return item["Stage"] === "Final";
+});
 
-    /* code here */
-
-};
+//console.log(getFinals);
 
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
