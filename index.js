@@ -74,39 +74,72 @@ function getYears(cb, arr) {
     //set the returned array equal to a variable
     let returnedArray = cb(arr);
     //use .map to isolate the year values
-    const yearsOnly = returnedArray.map(function(item){
+    const years = returnedArray.map(function(item){
         return item["Year"];
     });
     //return the array of years
-    return yearsOnly;
+    return years;
 };
 
-getYears(getFinals, fifaData);
-//console.log(getYears(getFinals, fifaData));
+//getYears(getFinals, fifaData);
+console.log(getYears(getFinals, fifaData));
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
-function getWinners(cb, arr) {
-    //create an array called winners
+// function getWinners(cb, arr) {
+//     //create an array called winners
+//     let winners = [];
+//     //set the returned array equal to a variable
+//     let returnedArray = cb(arr);
+//     //use a for loop to iterate through each final game
+//     for(let i = 0; i < returnedArray.length; i++){
+//         //if the home team scored more, push the home eam to the winners array. If the away team scored more, push the away team. If there is a tie, return that statement
+//         if(returnedArray[i]["Home Team Goals"] > returnedArray[i]["Away Team Goals"]){
+//             winners.push(returnedArray[i]["Home Team Name"]);
+//         }else if(returnedArray[i]["Home Team Goals"] < returnedArray[i]["Away Team Goals"]){
+//             winners.push(returnedArray[i]["Away Team Name"]);
+//         }else if(returnedArray[i]["Home Team Goals"] === returnedArray[i]["Away Team Goals"]){
+//             winners.push("Tie");    
+//         };
+//     };
+//     return winners;
+// };
+
+// const winners = [];
+// function getWinners(cb) {
+//     cb.forEach(function(item){
+//         if(item["Home Team Goals"] > item["Away Team Goals"]){
+//             winners.push(item["Home Team Name"]);
+//         }else if(item["Away Team Goals"] > item["Home Team Goals"]){
+//             winners.push(item["Away Team Name"]);
+//         }else{
+//             winners.push("Tie");
+//         };
+//     });
+//     return winners;
+// };
+
+function getWinners(cb, data){
+    // Create an array called winners
     let winners = [];
-    //set the returned array equal to a variable
-    let returnedArray = cb(arr);
-    //use a for loop to iterate through each final game
-    for(let i = 0; i < returnedArray.length; i++){
+    // set the returned array equal to a variable
+    let returnedArray = cb(data);
+    // Use the forEach method to iterate through every item in thre returned array
+    returnedArray.forEach(function(item){
         //if the home team scored more, push the home eam to the winners array. If the away team scored more, push the away team. If there is a tie, return that statement
-        if(returnedArray[i]["Home Team Goals"] > returnedArray[i]["Away Team Goals"]){
-            winners.push(returnedArray[i]["Home Team Name"]);
-        }else if(returnedArray[i]["Home Team Goals"] < returnedArray[i]["Away Team Goals"]){
-            winners.push(returnedArray[i]["Away Team Name"]);
-        }else if(returnedArray[i]["Home Team Goals"] === returnedArray[i]["Away Team Goals"]){
+        if(item["Home Team Goals"] > item["Away Team Goals"]){
+            winners.push(item["Home Team Name"]);
+        }else if(item["Home Team Goals"] < item["Away Team Goals"]){
+            winners.push(item["Away Team Name"]);
+        }else if(item["Home Team Goals"] === item["Away Team Goals"]){
             winners.push("Tie");    
         };
-    };
+    });
     return winners;
 };
 
 console.log(getWinners(getFinals, fifaData));
-//getWinners(getFinals, fifaData);
+//getWinners(getFinals(fifaData));
 
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
@@ -116,10 +149,12 @@ Parameters:
  */
 
 function getWinnersByYear(cb1, cb2) {
-    let winnersArray = cb1(getFinals, fifaData);
+    let winnersArray = cb1(getFinals, fifaData); //calls getWinners
     let yearsArray = cb2(getFinals, fifaData);
     for (let i = 0; i < yearsArray.length; i++){
-        console.log(`In ${yearsArray[i]}, ${winnersArray[i]} won the world cup!`);
+        if(winnersArray[i] !== "Tie"){
+            console.log(`In ${yearsArray[i]}, ${winnersArray[i]} won the world cup!`);
+        };
     };
 };
 
@@ -150,21 +185,19 @@ getAverageGoals(fifaData);
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
+// function getCountryWins(data, teamInit) {
 
-    /* code here */
+// };
 
-};
-
-getCountryWins();
+// getCountryWins();
 
 
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
-function getGoals(/* code here */) {
-
-    /* code here */
-
+function getGoals(data) {
+    const allGoals = data.filter(function(item){
+        return 
+    });
 };
 
 getGoals();
