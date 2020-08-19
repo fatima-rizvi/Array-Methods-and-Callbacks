@@ -86,39 +86,6 @@ console.log(getYears(getFinals, fifaData));
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
-// function getWinners(cb, arr) {
-//     //create an array called winners
-//     let winners = [];
-//     //set the returned array equal to a variable
-//     let returnedArray = cb(arr);
-//     //use a for loop to iterate through each final game
-//     for(let i = 0; i < returnedArray.length; i++){
-//         //if the home team scored more, push the home eam to the winners array. If the away team scored more, push the away team. If there is a tie, return that statement
-//         if(returnedArray[i]["Home Team Goals"] > returnedArray[i]["Away Team Goals"]){
-//             winners.push(returnedArray[i]["Home Team Name"]);
-//         }else if(returnedArray[i]["Home Team Goals"] < returnedArray[i]["Away Team Goals"]){
-//             winners.push(returnedArray[i]["Away Team Name"]);
-//         }else if(returnedArray[i]["Home Team Goals"] === returnedArray[i]["Away Team Goals"]){
-//             winners.push("Tie");    
-//         };
-//     };
-//     return winners;
-// };
-
-// const winners = [];
-// function getWinners(cb) {
-//     cb.forEach(function(item){
-//         if(item["Home Team Goals"] > item["Away Team Goals"]){
-//             winners.push(item["Home Team Name"]);
-//         }else if(item["Away Team Goals"] > item["Home Team Goals"]){
-//             winners.push(item["Away Team Name"]);
-//         }else{
-//             winners.push("Tie");
-//         };
-//     });
-//     return winners;
-// };
-
 function getWinners(cb, data){
     // Create an array called winners
     let winners = [];
