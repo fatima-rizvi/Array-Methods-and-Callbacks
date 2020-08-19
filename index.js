@@ -175,8 +175,8 @@ function getAverageGoals(data) {
 Average number of Away Goals: ${avgAwayGoals}`;
 };
 
-//console.log(getAverageGoals(fifaData));
-getAverageGoals(fifaData);
+console.log(getAverageGoals(fifaData));
+//getAverageGoals(fifaData);
 
 /// STRETCH 🥅 //
 
